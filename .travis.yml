@@ -3,21 +3,21 @@ services:
   - docker
 
 before_install:
-  - docker build -t mzherdev/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t michaelzherdev1987/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run mzherdev/react-test npm test -- --coverage
+  - docker run michaelzherdev1987/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t mzherdev/multi-client ./client
-  - docker build -t mzherdev/multi-nginx ./nginx
-  - docker build -t mzherdev/multi-server ./server
-  - docker build -t mzherdev/multi-worker ./worker
+  - docker build -t michaelzherdev1987/multi-client ./client
+  - docker build -t michaelzherdev1987/multi-nginx ./nginx
+  - docker build -t michaelzherdev1987/multi-server ./server
+  - docker build -t michaelzherdev1987/multi-worker ./worker
 # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
 # Take those images and push them to docker hub
-  - docker push mzherdev/multi-client
-  - docker push mzherdev/multi-nginx
-  - docker push mzherdev/multi-server
-  - docker push mzherdev/multi-worker
+  - docker push michaelzherdev1987/multi-client
+  - docker push michaelzherdev1987/multi-nginx
+  - docker push michaelzherdev1987/multi-server
+  - docker push michaelzherdev1987/multi-worker
